@@ -1,0 +1,21 @@
+---
+name: testing
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  install:
+    name: install
+    runs-on: ubuntu-latest
+    steps:
+    - name: check out code
+      uses: actions/checkout@v2
+
+    - name: install kind
+      uses: engineerd/setup-kind@v0.5.0
+
+    - name: test commands
+      run: kubectl get pods -n kube-system
