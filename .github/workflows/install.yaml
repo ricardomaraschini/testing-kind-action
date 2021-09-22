@@ -20,9 +20,10 @@ jobs:
         version: v0.11.1
 
     - name: create tagger namespace
-      run: |
+      run: |-
         kubectl create namespace tagger
         kubectl config set-context --current --namespace=my-namespace
 
     - name: install helm chart
+      run: |-
         helm install tagger https://github.com/ricardomaraschini/tagger/releases/download/latest/tagger-v0.0.0.tgz
