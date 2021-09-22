@@ -7,32 +7,11 @@ on:
       - master
 
 jobs:
-  install:
-    name: install
-    runs-on: ubuntu-latest
-    steps:
+  artifacts:
     - name: check out code
       uses: actions/checkout@v2
 
-    - name: install kind
-      uses: engineerd/setup-kind@v0.5.0
+    - uses: actions/upload-artifact@v2
       with:
-        version: v0.11.1
-
-    - name: create tagger namespace
-      run: |-
-        kubectl create namespace tagger
-        kubectl config set-context --current --namespace=tagger
-
-    - name: install helm chart
-      run: |-
-        helm install tagger https://github.com/ricardomaraschini/tagger/releases/download/latest/tagger-v0.0.0.tgz
-
-    - name: sleep for a while
-      run: |-
-        sleep 60
-
-    - name: get pod statuses
-      run: |-
-        kubectl get pods
-
+        name: test
+        path: test.txt
