@@ -22,8 +22,17 @@ jobs:
     - name: create tagger namespace
       run: |-
         kubectl create namespace tagger
-        kubectl config set-context --current --namespace=my-namespace
+        kubectl config set-context --current --namespace=tagger
 
     - name: install helm chart
       run: |-
         helm install tagger https://github.com/ricardomaraschini/tagger/releases/download/latest/tagger-v0.0.0.tgz
+
+    - name: sleep for a while
+      run: |-
+        sleep 60
+
+    - name: get pod statuses
+      run: |-
+        kubectl get pods
+
