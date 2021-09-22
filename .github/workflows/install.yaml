@@ -17,7 +17,7 @@ jobs:
     - name: install kind
       uses: engineerd/setup-kind@v0.5.0
       with:
-        wait: 10m
+        version: v0.11.1
 
     - name: test commands
       run: |
