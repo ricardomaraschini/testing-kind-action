@@ -15,8 +15,6 @@ jobs:
 
     - name: check out code
       uses: actions/checkout@v2
-      with:
-        ref: 'redhat-3.5'
 
     - name: file content
       run: cat test.txt
