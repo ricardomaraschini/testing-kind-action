@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - redhat-3.5
+      - master
 
 jobs:
   artifacts:
